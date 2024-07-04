@@ -11,7 +11,7 @@ function App() {
   return (
     <Router className='w-full h-screen bg-black'>
       <Routes>
-        <Route path="/read" element={<ReadPost />} />
+        <Route path="/" element={<ReadPost />} />
         <Route path="/edit/:id" element={<EditPost />} />
         <Route path="/delete/:id" element={<DeletePost />} />
         <Route path="/create" element={<CreatePost />} />
