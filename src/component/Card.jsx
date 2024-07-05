@@ -57,13 +57,16 @@ const Card = (props) => {
                         <FontAwesomeIcon icon={faYoutube} />
                     </a>
                 )}
-                <a href={props.resource}>
-                    <FontAwesomeIcon icon={faBook} />
-                </a>
+                {props.resource && (
+                    <a href={props.resource}>
+                        <FontAwesomeIcon icon={faBook} />
+                    </a>
+                )}
             </div>
             <p>{props.description}</p>
+            <p>Solution:</p>
             <p>{props.solution}</p>
-            <p>Created at: {props.time}</p>
+            <p className='pt-4'>Created at: {props.time}</p>
         </div>
     )
 };

@@ -25,9 +25,9 @@ const ReadPost = () => {
     }, [])
 
     return (
-        <div className='w-full h-screen bg-black text-gray-100'>
+        <div className='w-full h-full bg-black text-gray-100 pb-20'>
             <Head />
-            <div className='flex flex-col'>
+            <div className={`grid ${posts.length > 0 ? 'md:grid-cols-3' : 'flex justify-center items-center'} grid-cols-1 justify-items-center gap-4 p-10 h-full`}>
                 {
                     posts && posts.length > 0 ?
                     posts.map((post) => (
@@ -42,7 +42,11 @@ const ReadPost = () => {
                             resource={post.resource}
                             solution={post.solution}
                         />
-                    )) : <p>No posts available</p>
+                    )) : (
+                         <p className='md:text-3xl text-xl text-center h-screen'>
+                            Just give me a second. It's loading... 
+                        </p>
+                    )
                 }
             </div>
         </div>

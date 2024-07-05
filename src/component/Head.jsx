@@ -15,7 +15,7 @@ function Head() {
                 ALGORITHMIC PROBLEMS CHALLENGE
             </h1>
             <div className='flex md:gap-8 gap-2 md:text-2xl text-xl'>
-                <Link to="/read">
+                <Link to="/post">
                     <button 
                         className='mx-2 px-4 py-2 rounded-lg shadow-sm shadow-gray-500 bg-purple-800 hover:bg-gray-100 hover:text-black'
                     >

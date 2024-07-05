@@ -13,6 +13,7 @@ const CreatePost = () => {
         resource: "",
         solution: "", 
     })
+    const [textColor, setTextColor] = useState('black');
 
     const createPost = async (e) => {
         e.preventDefault();
@@ -82,53 +83,61 @@ const CreatePost = () => {
         textarea.style.height = textarea.scrollHeight + 'px';
     }
 
+    const toggleTextColor = (e) => {
+        e.preventDefault();
+        setTextColor(textColor === 'black' ? 'white' : 'black');
+    };
+
     return (
-        <div className="w-full h-auto pb-40 pt-0 m-0 bg-black text-white text-xl font-sans font-light tracking-wide">
+        <div className="w-full h-auto pb-40 pt-0 m-0 bg-black text-xl font-sans font-light tracking-wide">
             <Head />
-            <form className="flex flex-col justify-center items-center gap-10 pt-16">
+            <form className="flex flex-col justify-center items-center gap-10 pt-16 text-black" >
                 <div className="flex flex-col gap-5">
                     <div className="flex flex-col gap-2">
-                        <label className="text-xl" htmlFor="problem">Problem</label>
+                        <label className="text-xl text-white" htmlFor="problem">Problem</label>
                         <input 
-                            className="md:w-[700px] w-[300px] p-4 text-black rounded-md" 
+                            className="md:w-[700px] w-[300px] p-4 rounded-md"
                             id="problem" 
                             name="problem" 
                             type="text"
                             value={post.problem}
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label className="text-xl" htmlFor="backgroundImage">Background Image</label>
+                        <label className="text-xl text-white" htmlFor="backgroundImage">Background Image</label>
                         <input 
-                            className="md:w-[700px] w-[300px] p-4 text-black rounded-md" 
+                            className="md:w-[700px] w-[300px] p-4 rounded-md" 
                             id="backgroundImage"
                             name="backgroundImage"
                             type="file"
                             accept="image/*"
                             onChange={handleImageChange}
+                            required
                         /> 
                     </div>
                     <div className="flex flex-col gap-2">
                         <div className="flex flex-col gap-0">
-                            <label htmlFor="description">Description</label>
+                            <label htmlFor="description" className="text-white">Description</label>
                             <p className="font-serif font-thin text-[12px]">Provide a description of the problem.</p>
                         </div>
                         <textarea 
-                            className="md:w-[700px] w-[300px] p-4 text-black rounded-md row-auto" 
+                            className="md:w-[700px] w-[300px] p-4  rounded-md row-auto"
                             id="description"
                             name="description"
                             type="text"
                             rows="4"
                             cols="100"
                             value={post.description}
-                            onChange={handleChange}    
+                            onChange={handleChange}
+                            required    
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="solution">Solution</label>
+                        <label htmlFor="solution" className="text-white">Solution</label>
                         <textarea 
-                            className="md:w-[700px] w-[300px] p-4 text-black rounded-md row-auto" 
+                            className="md:w-[700px] w-[300px] p-4 rounded-md row-auto"
                             id="solution"
                             name="solution"
                             type="text"
@@ -136,7 +145,8 @@ const CreatePost = () => {
                             cols="100"
                             value={post.solution}
                             onChange={handleChange} 
-                            onInput={handleInput}  
+                            onInput={handleInput} 
+                            required 
                             style={{
                                 whiteSpace: 'pre-wrap',
                                 overflow: 'anywhere',
@@ -147,23 +157,24 @@ const CreatePost = () => {
                     </div>
                     <div className="flex flex-col gap-2">
                         <h1 className="text-3xl text-purple-800">Resources</h1>
-                        <label className="text-xl" htmlFor="youtube">
+                        <label className="text-xl text-white" htmlFor="youtube">
                             <FontAwesomeIcon icon={faYoutube} className="pr-3"/>
                             Youtube
                         </label>
                         <input 
-                            className="md:w-[700px] w-[300px] p-4 text-black rounded-md" 
+                            className="md:w-[700px] w-[300px] p-4 rounded-md"
                             id="youtube"
                             name="youtube"
                             type="url"
                             value={post.youtube}
                             onChange={handleChange}
+
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label className="text-xl" htmlFor="resource">Resource/Document link</label>
+                        <label className="text-xl text-white" htmlFor="resource">Resource/Document link</label>
                         <input 
-                            className="md:w-[700px] w-[300px] p-4 text-black rounded-md" 
+                            className="md:w-[700px] w-[300px] p-4  rounded-md"
                             id="resource"
                             name="resource"
                             type="url"
