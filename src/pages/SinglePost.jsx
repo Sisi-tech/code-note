@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { supabase } from '../client';
 import Card from '../component/Card';
 import getTimeDifference from '../component/GetTime';
 import Head from '../component/Head';
 
-const SinglePost = (props) => {
-    const [post, setPost] = useState([])
+const SinglePost = () => {
+    const { id } = useParams();
+    const [post, setPost] = useState(null);
 
     useEffect(() => {
-        const fetchPost = async (id) => {
+        const fetchPost = async () => {
             try {
-                console.log("singlePost with id: ", id);
-                const { data: code_note, error } = await supabase
+                const postId = parseInt(id, 10);
+                if (isNaN(postId)) {
+                    throw new Error('Invalid post ID');
+                }
+                console.log("singlePost with id: ", postId);
+                const { data, error } = await supabase
                     .from('code_note')
-                    .select('id', id)
+                    .select('*')
+                    .eq('id', postId)
+                    .single();
                 if (error) {
                     console.error("Error reading single post: ", error);
                 } else {
@@ -24,11 +32,13 @@ const SinglePost = (props) => {
                     console.error("Unexpected error: ", error);
                 }
             }
-        fetchPost();
-    }, [])
+        if (id) {
+            fetchPost();
+        }
+    }, [id]);
     
     return (
-        <div>
+        <div className='w-full h-screen bg-black text-white'>
             <Head />
             <div>
                 {
@@ -44,7 +54,7 @@ const SinglePost = (props) => {
                         resource={post.resource}
                         solution={post.solution}
                     />
-                    : <p>`There is date with id: ${post.id}`</p>
+                    : <p>Loading...</p>
                 }
             </div>
         </div>

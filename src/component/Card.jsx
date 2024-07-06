@@ -43,7 +43,7 @@ const Card = (props) => {
             <div className="flex justify-between items-center mb-4">
                 <h1 className='text-xl font-bold'>{props.problem}</h1>
                 <div className="flex items-center gap-3 text-md">
-                    <Link to={`/edit/${props.id}`} className="flex items-center justify-center">
+                    <Link to={`/post/${props.id}`} className="flex items-center justify-center">
                         <FontAwesomeIcon icon={faEdit} />
                     </Link>
                     <button onClick={handleDelete} className="flex items-center justify-center">

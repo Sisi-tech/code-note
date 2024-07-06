@@ -1,13 +1,12 @@
 import Head from "./Head";
+import Content from "./Content";
 
 const Home = () => {
 
     return (
         <div>
             <Head />
-            <div>
-                <h1>This is the home page</h1>
-            </div>
+            <Content />
         </div>
     )
 }

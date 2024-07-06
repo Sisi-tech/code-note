@@ -3,6 +3,7 @@ import { supabase } from '../client.jsx';
 import Card from '../component/Card';
 import React, { useState, useEffect } from 'react';
 import getTimeDifference from '../component/GetTime.jsx';
+import Content from '../component/Content.jsx';
 
 const ReadPost = () => {
     const [posts, setPosts] = useState([]);
@@ -27,7 +28,7 @@ const ReadPost = () => {
     return (
         <div className='w-full h-full bg-black text-gray-100 pb-20'>
             <Head />
-            <div className={`grid ${posts.length > 0 ? 'md:grid-cols-3' : 'flex justify-center items-center'} grid-cols-1 justify-items-center gap-4 p-10 h-full`}>
+            <div className={`grid ${posts.length > 0 ? 'md:grid-cols-2' : 'flex justify-center items-center'} lg:grid-cols-3 grid-cols-1 justify-items-center gap-4 p-10 h-full`}>
                 {
                     posts && posts.length > 0 ?
                     posts.map((post) => (
@@ -42,11 +43,7 @@ const ReadPost = () => {
                             resource={post.resource}
                             solution={post.solution}
                         />
-                    )) : (
-                         <p className='md:text-3xl text-xl text-center h-screen'>
-                            Just give me a second. It's loading... 
-                        </p>
-                    )
+                    )) : <Content />
                 }
             </div>
         </div>
