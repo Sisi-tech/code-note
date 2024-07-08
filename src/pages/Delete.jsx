@@ -11,7 +11,7 @@ const DeletePost = async (id) => {
             console.error("Error deleting post: ", error);
         } else {
             console.log("Post deleted successfully");
-            window.location = '/';
+            window.location = '/post';
         }
     } catch (error) {
         console.error("Unexpected error:", error);

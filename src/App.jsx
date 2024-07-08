@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import EditPost from './pages/Edit';
+import EditPost from "./pages/Edit";
 import DeletePost from './pages/Delete';
 import ReadPost from './pages/Read';
 import CreatePost from './pages/Create';

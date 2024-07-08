@@ -3,8 +3,11 @@ import { supabase } from "../client.jsx";
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 
 const CreatePost = () => {
+    const { id } = useParams();
     const [post, setPost] = useState({
         problem: "", 
         image: "", 
@@ -12,8 +15,7 @@ const CreatePost = () => {
         youtube: "", 
         resource: "",
         solution: "", 
-    })
-    const [textColor, setTextColor] = useState('black');
+    });
 
     const createPost = async (e) => {
         e.preventDefault();
@@ -47,35 +49,36 @@ const CreatePost = () => {
     }
 
     const handleChange = (e) => {
-        const { name, value} = e.target;
-        setPost((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    }
-
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            if (reader.result) {
-                setPost((prev) => ({
-                    ...prev,
-                    image: reader.result
-                }));
-            } else {
-                console.error("Reader result is empty");
-            }
-        };
-        reader.onerror = () => {
-            console.error("Error reading file: " , reader.error)
-        };
-        if (file) {
+        const { name, value, files } = e.target;
+    
+        if (files && files[0]) {
+            const file = files[0];
+            const reader = new FileReader();
+    
+            reader.onloadend = () => {
+                if (reader.result) {
+                    setPost((prev) => ({
+                        ...prev,
+                        [name]: reader.result,
+                    }));
+                } else {
+                    console.error("Reader result is empty");
+                }
+            };
+    
+            reader.onerror = () => {
+                console.error("Error reading file: ", reader.error);
+            };
+    
             reader.readAsDataURL(file);
         } else {
-            console.error("no file selected")
+            setPost((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
         }
-    }
+    };
+    
 
     const handleInput = (e) => {
         const textarea = e.target;
@@ -83,15 +86,10 @@ const CreatePost = () => {
         textarea.style.height = textarea.scrollHeight + 'px';
     }
 
-    const toggleTextColor = (e) => {
-        e.preventDefault();
-        setTextColor(textColor === 'black' ? 'white' : 'black');
-    };
-
     return (
         <div className="w-full h-auto pb-40 pt-0 m-0 bg-black text-xl font-sans font-light tracking-wide">
             <Head />
-            <form className="flex flex-col justify-center items-center gap-10 pt-16 text-black" >
+            <form className="flex flex-col justify-center items-center gap-10 pt-16 text-black">
                 <div className="flex flex-col gap-5">
                     <div className="flex flex-col gap-2">
                         <label className="text-xl text-white" htmlFor="problem">Problem</label>
@@ -106,14 +104,14 @@ const CreatePost = () => {
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label className="text-xl text-white" htmlFor="backgroundImage">Background Image</label>
+                        <label className="text-xl text-white" htmlFor="image">Background Image</label>
                         <input 
                             className="md:w-[700px] w-[300px] p-4 rounded-md" 
-                            id="backgroundImage"
-                            name="backgroundImage"
+                            id="image"
+                            name="image"
                             type="file"
                             accept="image/*"
-                            onChange={handleImageChange}
+                            onChange={handleChange}
                             required
                         /> 
                     </div>
@@ -168,6 +166,7 @@ const CreatePost = () => {
                             type="url"
                             value={post.youtube}
                             onChange={handleChange}
+                            placeholder="Enter YouTube URL"
 
                         />
                     </div>
@@ -180,6 +179,7 @@ const CreatePost = () => {
                             type="url"
                             value={post.resource}
                             onChange={handleChange}
+                            placeholder="Enter Resource URL"
                         /> 
                     </div>
                 </div>
@@ -195,4 +195,4 @@ const CreatePost = () => {
     )
 }
 
-export default CreatePost; 
+export default CreatePost;

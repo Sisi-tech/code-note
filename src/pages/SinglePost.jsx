@@ -38,12 +38,12 @@ const SinglePost = () => {
     }, [id]);
     
     return (
-        <div className='w-full h-screen bg-black text-white'>
+        <div className='w-full h-auto bg-black text-white'>
             <Head />
-            <div>
+            <div className='w-full h-auto flex justify-center content-center p-10'>
                 {
-                    post ? 
-                    <Card 
+                    post ? (
+                        <Card 
                         key={post.id}
                         id={post.id}
                         time={getTimeDifference(post.created_at)}
@@ -53,8 +53,11 @@ const SinglePost = () => {
                         youtube={post.youtube}
                         resource={post.resource}
                         solution={post.solution}
+                        className="md:w-[500px] w-[500px] h-auto p-20"
                     />
-                    : <p>Loading...</p>
+                    ) : (
+                    <p>Loading...</p>
+                    )
                 }
             </div>
         </div>
