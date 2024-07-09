@@ -28,7 +28,7 @@ const Card = (props) => {
         <div>
             <Link to={`/post/${props.id}`} >
                 <div 
-                    className={`border border-gray-400 rounded-lg md:w-[500px] w-[460px] h-auto m-4 p-10 text-black ${props.className}`}
+                    className={`border border-gray-400 rounded-lg md:w-[500px] w-[460px] h-[520px] m-4 p-10 text-black ${props.className}`}
                     style={{ 
                         backgroundImage: `url(${props.image})`,
                         backgroundSize: 'cover',
