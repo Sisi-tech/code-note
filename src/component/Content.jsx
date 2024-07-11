@@ -25,7 +25,7 @@ const Content = () => {
                         <Link to="/review/heaps">- Heaps</Link>
                     </li>
                     <li>
-                        <Link to="/review/linked-lists">- Linked Lists</Link>
+                        <Link to="/review/linked-list">- Linked Lists</Link>
                     </li>
                     <li>
                         <Link to="/review/temp-head">- Temp Head</Link>
