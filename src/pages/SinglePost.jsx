@@ -4,6 +4,7 @@ import { supabase } from '../client';
 import Card from '../component/Card';
 import getTimeDifference from '../component/GetTime';
 import Head from '../component/Head';
+import { Link } from 'react-router-dom';
 
 const SinglePost = () => {
     const { id } = useParams();
@@ -40,7 +41,11 @@ const SinglePost = () => {
     return (
         <div className='w-full h-auto bg-black text-white'>
             <Head />
-            <div className='w-full h-auto flex justify-center content-center p-10'>
+            <div className='flex gap-5 pl-40 pt-6 text-xl'>
+                <Link to="/"><button>HOME</button></Link>
+                <Link to="/post" ><button>POST</button></Link>
+            </div>
+            <div className='w-full h-auto flex justify-center content-center p-4 pb-10'>
                 {
                     post ? (
                         <Card 

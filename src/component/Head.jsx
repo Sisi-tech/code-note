@@ -11,9 +11,11 @@ function Head() {
                 backgroundPosition: 'center 40%' 
             }}
         >
-            <h1 className='md:text-5xl text-2xl font-bold'>
-                ALGORITHMIC PROBLEMS CHALLENGE
-            </h1>
+            <Link to="/">
+                <h1 className='md:text-5xl text-2xl font-bold'>
+                    ALGORITHMIC PROBLEMS CHALLENGE
+                </h1>
+            </Link>
             <div className='flex md:gap-8 gap-2 md:text-2xl text-xl'>
                 <Link to="/post">
                     <button 
