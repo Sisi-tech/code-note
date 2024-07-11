@@ -18,7 +18,7 @@ const BigONotation = () => {
                 <section className="flex flex-col gap-4">
                     <h2 className="text-3xl font-semibold">Examples</h2>
                     <p>In all of the following examples, we'll consider a single function that takes an array of items as input and has no output: a method with the signature void someFunction(int[] inputArray). So in all the following examples, n will represent the length of inputArray, and we'll express the complexity the method's body using Big O in relation to n.</p>
-                    <h3>O(1) - Constant Complexity</h3>
+                    <h3 className="text-2xl font-semibold">O(1) - Constant Complexity</h3>
                     <p>Let's start with one of the simplest possible implementations of this method, one which does nothing but print the size of the input array:</p>
                     <pre className="p-5 border-gray-300 border bg-gray-50">
                         <code>

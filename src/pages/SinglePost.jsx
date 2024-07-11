@@ -39,13 +39,13 @@ const SinglePost = () => {
     }, [id]);
     
     return (
-        <div className='w-full h-screen bg-black text-white'>
+        <div className='w-full h-full bg-black text-white '>
             <Head />
             <div className='flex gap-5 pl-40 pt-6 text-xl'>
                 <Link to="/"><button>HOME</button></Link>
                 <Link to="/post" ><button>POST</button></Link>
             </div>
-            <div className='w-full h-auto flex justify-center content-center p-4 pb-10'>
+            <div className='w-full h-screen flex justify-center content-center p-4 pb-10'>
                 {
                     post ? (
                         <Card 

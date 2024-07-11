@@ -25,7 +25,7 @@ const ReadPost = () => {
     }, []);
 
     return (
-        <div className='w-full h-full bg-black text-gray-100 pb-20'>
+        <div className='w-full h-full bg-black text-gray-100'>
             <Head />
             <div className={`grid ${posts.length > 0 ? 'md:grid-cols-3 lg:grid-cols-3 grid-cols-1 justify-items-center gap-4 p-10 h-full' : 'flex justify-center items-center h-full'}`}>
                 {posts && posts.length > 0 ? (
