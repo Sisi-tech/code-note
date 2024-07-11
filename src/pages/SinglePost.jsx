@@ -39,7 +39,7 @@ const SinglePost = () => {
     }, [id]);
     
     return (
-        <div className='w-full h-auto bg-black text-white'>
+        <div className='w-full h-screen bg-black text-white'>
             <Head />
             <div className='flex gap-5 pl-40 pt-6 text-xl'>
                 <Link to="/"><button>HOME</button></Link>
