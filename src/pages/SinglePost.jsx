@@ -56,7 +56,9 @@ const SinglePost = () => {
                         className="md:w-[500px] w-[500px] h-auto p-20"
                     />
                     ) : (
-                    <p>Loading...</p>
+                        <div className='w-full h-screen flex justify-center'>
+                            <p className='2xl'>Loading...</p>
+                        </div>
                     )
                 }
             </div>
